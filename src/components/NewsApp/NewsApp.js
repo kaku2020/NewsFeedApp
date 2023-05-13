@@ -12,7 +12,22 @@ function NewsApp() {
   const [currentPage, setCurrentPage] = useState(1);
   const [currbookmarkedArticles, setBookmarkedArticles] = useState([])
   
-  useEffect(() => {handleInput()},[])
+  useEffect(() => {
+    const initalcall = async () => {
+      try {
+    const response = await axios.get(
+      'https://newsapi.org/v2/everything?q='+'bitcoin' +'&apiKey=' + API_KEY
+    );
+    setData(response.data.articles);
+    
+    console.log(response.data.articles);
+  } catch (error) {
+    console.error(error);
+  }
+  }
+  initalcall();
+
+},[])
 
   const handleInput = async () => {
     try {
