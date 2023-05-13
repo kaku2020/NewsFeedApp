@@ -7,11 +7,14 @@ function NewsArticles({data,totalResults,currentPage,setCurrentPage,currbookmark
   
   useEffect(() => {
     //Retrieve bookmarkedArticles from  local storage when the component mounts 
+    try {
     let storedBookmarks = localStorage.getItem('bookmarkedArticles');
     storedBookmarks = JSON.parse(storedBookmarks);
     if(storedBookmarks.length > 0){
       setBookmarkedArticles(storedBookmarks);
-    }
+    } } catch (error) {
+      console.error(error);
+  }
   },[])
 
    useEffect(() => {
