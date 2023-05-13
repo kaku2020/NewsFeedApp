@@ -1,6 +1,6 @@
 import React from 'react'
 import  './BookmarkedArticles';
-
+import BootstrapBookmark from '../Bootstrap/BootstrapBookmark';
 function BookmarkedArticles({bookmarks, setBookmarks}) {
 
   const handleBookmark = (article) => {
@@ -9,20 +9,25 @@ function BookmarkedArticles({bookmarks, setBookmarks}) {
       )}
 
   return (
-    <div>
-      <h1>bookmarked</h1>
+    <div className='bookmark'>
+      <h1>Bookmarked</h1>
+      <div className='bookmark_container'>
      {bookmarks.length > 0 ? (
           <ul>
+             <div className='bookmark_container_component'>
             {bookmarks.map((article) => (
-              <>
+              <div className='bookmark_container_component_part'>
+            
               <li key={article.url}>
-                <a href={article.url}>{article.title}</a>
+              <BootstrapBookmark article = {article} handleBookmark ={handleBookmark}/>
               </li>
-              <button onClick = {() => handleBookmark(article)}>Remove Bookmark</button>
-              </>
+             
+              </div>
             ))}
+            </div>
           </ul>
-        ) : (<p>No bookmark</p>)}
+        ) : ( <div className='bookmark_container_component'><p>No bookmark</p></div>)}
+        </div>
     </div>
   )
 }

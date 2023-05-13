@@ -1,0 +1,44 @@
+/* Common styles for all screen sizes */
+.bookmark {
+    margin-top: 20px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .bookmark_container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .bookmark_container_component {
+    width: 100%;
+  }
+  
+  .bookmark_container_component_part {
+    margin-bottom: 10px;
+  }
+  
+  /* Styles for screens with a minimum width of 1024px */
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 28px;
+    }
+  }
+  
+  /* Styles for screens with a minimum width of 768px */
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 26px;
+    }
+  }
+  
+  /* Styles for screens with a width less than 768px */
+  @media (max-width: 767px) {
+    h1 {
+      font-size: 22px;
+    }
+  }
+  

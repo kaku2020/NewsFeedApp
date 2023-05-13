@@ -31,18 +31,18 @@ function NewsApp() {
   };
 
   return (
-    <div>
-      <div>  
+    <div className='app_container'>
+      <div className='navbar'>  
         <input
-        type='text'
-        value={search}
-        onChange={handleSearch}
-        
-        data-testid="orders__search"
+          type='text'
+          value={search}
+          onChange={handleSearch}
+          data-testid="orders__search"
       />
       <button onClick = {handleInput}>Search Articles</button></div>
+      <div className='newsFeed'>
       <NewsArticles data = {data} totalResults = {100}/>
-      hi this is NewsApp compoonent
+      </div>
     </div>
   )
 }

@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react'
+import Button from '@mui/material/Button';
 import  './NewsArticles'
 import BookmarkedArticles from '../BookmarkedArticles/BookmarkedArticles';
+import BootstrapArticle from '../Bootstrap/BootstrapArticle';
 
 function NewsArticles({data,totalResults}) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,7 +17,7 @@ function NewsArticles({data,totalResults}) {
   }
 
   const handleBookmark = (article) => {
-   debugger
+ 
     //check if the article is already book marked
     const isBookmarked = currbookmarkedArticles.find(
       (bookmark) => bookmark.url === article.url
@@ -25,10 +27,11 @@ function NewsArticles({data,totalResults}) {
       //Add the article to the bookmarkedArticles state
       setBookmarkedArticles((prevBookmarks) => [...prevBookmarks,article]);
     }else{
+      
+      
       //Remove the article from the bookmarked articles state
-      setBookmarkedArticles((prevBookmarks) => {
-        prevBookmarks.filter((bookmark) => bookmark.url !== article.url);
-      });
+      setBookmarkedArticles((prevBookmarks) => prevBookmarks.filter((bookmark) => bookmark.url !== article.url)
+      );
     }
   };
 
@@ -49,34 +52,45 @@ function NewsArticles({data,totalResults}) {
   const currData = data.slice(firstindex,last_index)
 
   return (
-    <div>
+    
+    <div className='news_container'>
       <h1>News App</h1>
+      <div className='news_container_feed'>
+      <div className='news_container_components_1'>
       {currData.length > 0 ? (
-        <div>
+        <div className='news_container_components_part'>
         <ul>
           {currData.map((article) => {
             return (
-              <>
-           <li key= {article.url}>
-              <a href={article.url}>{article.title}</a>
-            </li>
-            <button onClick={() => handleBookmark(article)}>
-              {currbookmarkedArticles.find(item => item.url === article.url) ? 'Remove Bookmark' : 'Bookmark'}
-            </button>
-            </>)})}
+          
+              <div className='news_container_components_part_items'>
+              <li key= {article.url}>
+                <BootstrapArticle article = {article} currbookmarkedArticles = {currbookmarkedArticles} handleBookmark = {handleBookmark} />
+                </li>
+           
+            </div>)})}
         </ul>
-        <div>
+        {'  '}
+        <div className='news_container_components_part_items'>
+        
           {currentPage > 1 && (
-            <button onClick= {handlePrevPage}>Previous Page</button>
+            <Button variant="contained"  size = "small" onClick= {handlePrevPage}>Previous Page</Button>
           )}
+          {' '}
           {currentPage*10 < totalResults && (
-            <button onClick={handleNextPage}>Next Page</button>
+            <Button  variant="contained" size = "small" onClick={handleNextPage}>Next Page</Button>
+            
           )}
+         </div>
           </div>
-          </div>) : (<p>Loading articles...</p>)}
-          <>
+          ) : (<div className='news_container_components_part_items'>
+            <p>Loading articles...</p> </div>)
+            }
+        </div>
+          <div className='news_container_components_2'>
           <BookmarkedArticles bookmarks = {currbookmarkedArticles} setBookmarks = {setBookmarkedArticles}/>
-          </>
+          </div>
+          </div>
     </div>
   )
 }

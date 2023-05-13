@@ -1,0 +1,57 @@
+.bootstrap_article {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+  }
+  
+  .bootstrap_article .card-header {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    padding: 10px;
+  }
+  
+  .bootstrap_article .card-header a {
+    color: #212529;
+    text-decoration: none;
+  }
+  
+  .bootstrap_article .card-body {
+    padding: 15px;
+  }
+  
+  .bootstrap_article .article_author {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .bootstrap_article .article_content {
+    margin-bottom: 10px;
+  }
+  
+  .bootstrap_article .bookmark_button {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  
+  .bootstrap_article .bookmark_button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  @media (min-width: 768px) {
+    .bootstrap_article {
+      width: 100%;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .bootstrap_article {
+      width: 70%;
+    }
+  }
+  
+  

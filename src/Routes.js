@@ -1,10 +1,11 @@
 import React from 'react'
 import NewsApp from './components/NewsApp/NewsApp'
+import './Routes' 
 
 function Routes() {
   return (
-    <div>
-      hi lets build an newsapp
+    <div className='app'>
+      
       <NewsApp/>
     </div>
   )
