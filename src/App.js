@@ -1,8 +1,8 @@
 import React from 'react'
 import NewsApp from './components/NewsApp/NewsApp'
-import './Routes' 
+import './App' 
 
-function Routes() {
+function App() {
   return (
     <div className='app'>
       <NewsApp/>
@@ -10,4 +10,4 @@ function Routes() {
   )
 }
 
-export default Routes
+export default App
