@@ -12,11 +12,10 @@ function BootstrapArticle({article,currbookmarkedArticles, handleBookmark}) {
         <Card.Text>
           {article.content}
         </Card.Text>
-        {' '}
-        <Button  variant="contained" onClick={() => handleBookmark(article)}>
+            {' '}
+            <Button  variant="contained" onClick={() => handleBookmark(article)}>
               {currbookmarkedArticles.find(item => item.url === article.url) ? 'Remove Bookmark' : 'Bookmark'}
             </Button>
-            
       </Card.Body>
     </Card>
   );

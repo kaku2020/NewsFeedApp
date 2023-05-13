@@ -2,41 +2,16 @@ import React,{useState,useEffect} from 'react'
 import  './NewsApp.css'
 import axios from 'axios'
 import NewsArticles from '../NewsArticles/NewsArticles';
-import ArticlesMarked from '../ArticlesMarked/ArticlesMarked';
 import BookmarkedArticles from '../BookmarkedArticles/BookmarkedArticles';
 
-const API_KEY = '2f987c859254473781ba98e7afcd3297';//process.env.REACT_APP_API_KEY;
-// const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = '2f987c859254473781ba98e7afcd3297';
+// const API_KEY = process.env.REACT_APP_API_KEY;// coreectly api ke should be hidden 
 function NewsApp() {
   const [data,setData] = useState('');
   const [search,setSearch] = useState('bitcoin');
   const [currentPage, setCurrentPage] = useState(1);
   const [currbookmarkedArticles, setBookmarkedArticles] = useState([])
   
-  
-  // useEffect(()=> {
-  //   const storedBookmarks = localStorage.getItem('bookmarkedArticles');
-    
-  //   debugger 
-  //   console.log('3');
-  //   if(storedBookmarks){
-  //     setBookmarkedArticles(JSON.parse(storedBookmarks));
-  //   }
-  //   },[])
-
-  // useEffect(() => {
-  //   debugger 
-  //   console.log('4');
-  //   localStorage.setItem('bookmarkedArticles', JSON.stringify(currbookmarkedArticles));
-  // }, [currbookmarkedArticles]);
-
-  // useEffect(() => {
-  //   //Retrieve bookmarkedArticles from  local storage when the component mounts 
-  //   const storedBookmarks = localStorage.getItem('bookmarkedArticles');
-  //   if(storedBookmarks){
-  //     setBookmarkedArticles(JSON.parse(storedBookmarks));
-  //   }
-  // },[])
   useEffect(() => {handleInput()},[])
 
   const handleInput = async () => {

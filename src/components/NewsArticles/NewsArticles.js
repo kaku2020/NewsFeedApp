@@ -1,14 +1,11 @@
-import React,{useState,useEffect} from 'react'
+import React,{useEffect} from 'react'
 import Button from '@mui/material/Button';
 import  './NewsArticles'
-import BookmarkedArticles from '../BookmarkedArticles/BookmarkedArticles';
 import BootstrapArticle from '../Bootstrap/BootstrapArticle';
 
 function NewsArticles({data,totalResults,currentPage,setCurrentPage,currbookmarkedArticles,setBookmarkedArticles}) {
   
   useEffect(() => {
-    debugger 
-    console.log('1');
     //Retrieve bookmarkedArticles from  local storage when the component mounts 
     let storedBookmarks = localStorage.getItem('bookmarkedArticles');
     storedBookmarks = JSON.parse(storedBookmarks);
@@ -18,9 +15,6 @@ function NewsArticles({data,totalResults,currentPage,setCurrentPage,currbookmark
   },[])
 
    useEffect(() => {
-    debugger 
-    console.log('2');
-   
     localStorage.setItem('bookmarkedArticles', JSON.stringify(currbookmarkedArticles));
   }, [currbookmarkedArticles]);
 
@@ -51,18 +45,6 @@ function NewsArticles({data,totalResults,currentPage,setCurrentPage,currbookmark
     }
   };
 
-  // useEffect(() => {
-  //   localStorage.setItem('bookmarkedArticles', JSON.stringify(currbookmarkedArticles));
-  // }, [currbookmarkedArticles]);
-
-  // useEffect(() => {
-  //   //Retrieve bookmarkedArticles from  local storage when the component mounts 
-  //   const storedBookmarks = localStorage.getItem('bookmarkedArticles');
-  //   if(storedBookmarks){
-  //     setBookmarkedArticles(JSON.parse(storedBookmarks));
-  //   }
-  // },[])
-
   const firstindex = currentPage*10 -10;
   const last_index = currentPage*10
   const currData = data.slice(firstindex,last_index)
@@ -72,9 +54,8 @@ function NewsArticles({data,totalResults,currentPage,setCurrentPage,currbookmark
     <div className='news_container'>
       <h1>News App</h1>
       <div className='news_container_feed'>
-      
-      <div className='news_container_components_1'>
-      {currData.length > 0 ? (
+        <div className='news_container_components_1'>
+          {currData.length > 0 ? (
         <div className='news_container_components_part'>
         <ul>
           {currData.map((article) => {
@@ -89,26 +70,19 @@ function NewsArticles({data,totalResults,currentPage,setCurrentPage,currbookmark
         </ul>
         {'  '}
         <div className='news_container_components_part_items'>
-        
-          {currentPage > 1 && (
-           
-            <Button variant="contained"  size = "small" onClick= {handlePrevPage}>Previous Page</Button>
+        {currentPage > 1 && (
+           <Button variant="contained"  size = "small" onClick= {handlePrevPage}>Previous Page</Button>
          )}
-          {' '}
-          {currentPage*10 < totalResults && (
-            
+        {' '}
+        {currentPage*10 < totalResults && (
             <Button  variant="contained" size = "small" onClick={handleNextPage}>Next Page</Button>
-            
-          )}
+        )}
          </div>
           </div>
           ) : (<div className='news_container_components_part_items'>
             <h2>Loading articles...</h2> </div>)
             }
         </div>
-          {/* <div className='news_container_components_2'>
-          <BookmarkedArticles bookmarks = {currbookmarkedArticles} setBookmarks = {setBookmarkedArticles}/>
-          </div> */}
           </div>
     </div>
   )

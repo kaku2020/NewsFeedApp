@@ -5,7 +5,6 @@ import './Routes'
 function Routes() {
   return (
     <div className='app'>
-      
       <NewsApp/>
     </div>
   )
