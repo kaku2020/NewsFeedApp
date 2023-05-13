@@ -4,9 +4,25 @@ import  './NewsArticles'
 import BookmarkedArticles from '../BookmarkedArticles/BookmarkedArticles';
 import BootstrapArticle from '../Bootstrap/BootstrapArticle';
 
-function NewsArticles({data,totalResults}) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [currbookmarkedArticles, setBookmarkedArticles] = useState([])
+function NewsArticles({data,totalResults,currentPage,setCurrentPage,currbookmarkedArticles,setBookmarkedArticles}) {
+  
+  useEffect(() => {
+    debugger 
+    console.log('1');
+    //Retrieve bookmarkedArticles from  local storage when the component mounts 
+    let storedBookmarks = localStorage.getItem('bookmarkedArticles');
+    storedBookmarks = JSON.parse(storedBookmarks);
+    if(storedBookmarks.length > 0){
+      setBookmarkedArticles(storedBookmarks);
+    }
+  },[])
+
+   useEffect(() => {
+    debugger 
+    console.log('2');
+   
+    localStorage.setItem('bookmarkedArticles', JSON.stringify(currbookmarkedArticles));
+  }, [currbookmarkedArticles]);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -35,17 +51,17 @@ function NewsArticles({data,totalResults}) {
     }
   };
 
-  useEffect(() => {
-    localStorage.setItem('bookmarkedArticles', JSON.stringify(currbookmarkedArticles));
-  }, [currbookmarkedArticles]);
+  // useEffect(() => {
+  //   localStorage.setItem('bookmarkedArticles', JSON.stringify(currbookmarkedArticles));
+  // }, [currbookmarkedArticles]);
 
-  useEffect(() => {
-    //Retrieve bookmarkedArticles from  local storage when the component mounts 
-    const storedBookmarks = localStorage.getItem('bookmarkedArticles');
-    if(storedBookmarks){
-      setBookmarkedArticles(JSON.parse(storedBookmarks));
-    }
-  },[])
+  // useEffect(() => {
+  //   //Retrieve bookmarkedArticles from  local storage when the component mounts 
+  //   const storedBookmarks = localStorage.getItem('bookmarkedArticles');
+  //   if(storedBookmarks){
+  //     setBookmarkedArticles(JSON.parse(storedBookmarks));
+  //   }
+  // },[])
 
   const firstindex = currentPage*10 -10;
   const last_index = currentPage*10
@@ -56,6 +72,7 @@ function NewsArticles({data,totalResults}) {
     <div className='news_container'>
       <h1>News App</h1>
       <div className='news_container_feed'>
+      
       <div className='news_container_components_1'>
       {currData.length > 0 ? (
         <div className='news_container_components_part'>
@@ -74,22 +91,24 @@ function NewsArticles({data,totalResults}) {
         <div className='news_container_components_part_items'>
         
           {currentPage > 1 && (
+           
             <Button variant="contained"  size = "small" onClick= {handlePrevPage}>Previous Page</Button>
-          )}
+         )}
           {' '}
           {currentPage*10 < totalResults && (
+            
             <Button  variant="contained" size = "small" onClick={handleNextPage}>Next Page</Button>
             
           )}
          </div>
           </div>
           ) : (<div className='news_container_components_part_items'>
-            <p>Loading articles...</p> </div>)
+            <h2>Loading articles...</h2> </div>)
             }
         </div>
-          <div className='news_container_components_2'>
+          {/* <div className='news_container_components_2'>
           <BookmarkedArticles bookmarks = {currbookmarkedArticles} setBookmarks = {setBookmarkedArticles}/>
-          </div>
+          </div> */}
           </div>
     </div>
   )

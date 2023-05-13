@@ -13,6 +13,7 @@ function BookmarkedArticles({bookmarks, setBookmarks}) {
       <h1>Bookmarked</h1>
       <div className='bookmark_container'>
      {bookmarks.length > 0 ? (
+      <div>
           <ul>
              <div className='bookmark_container_component'>
             {bookmarks.map((article) => (
@@ -26,7 +27,8 @@ function BookmarkedArticles({bookmarks, setBookmarks}) {
             ))}
             </div>
           </ul>
-        ) : ( <div className='bookmark_container_component'><p>No bookmark</p></div>)}
+          </div>
+        ) : ( <div className='bookmark_container_component'><h2>No bookmark</h2></div>)}
         </div>
     </div>
   )

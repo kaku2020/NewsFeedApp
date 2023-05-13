@@ -6,7 +6,7 @@ function BootstrapArticle({article,currbookmarkedArticles, handleBookmark}) {
   return (
     <Card
           className="mb-2">
-      <Card.Header><a href={article.url}>{article.title}</a></Card.Header>
+      <Card.Header><a href={article.url}  target="_blank" rel="noopener noreferrer">{article.title}</a></Card.Header>
       <Card.Body>
         <Card.Title>Author : {article.author}</Card.Title>
         <Card.Text>

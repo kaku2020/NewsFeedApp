@@ -155,11 +155,15 @@
     padding: 0;
   }
   
+  .news_container_components_part_items_button{
+    margin-top: 10%;
+    padding: 10%;
+  }
+
   .news_container_components_part_items {
     margin-bottom: 10px;
-    margin-top: 10px;
-    justify-content: center;
-    align-items: center;
+   
+    
   }
   
   /* Styles for screens with a minimum width of 1024px */
