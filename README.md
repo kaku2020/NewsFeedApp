@@ -10,8 +10,7 @@
 8.Paste the above link in the browser and hit enter if it does not start automatically
 9.Sample video of the app 
 
-https://screenrec.com/share/uwemU3odRS 
-
+[https://screenrec.com/share/uwemU3odRS](url)
 
 # Getting Started with Create React App
 
