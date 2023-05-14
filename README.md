@@ -9,7 +9,7 @@
 7.The app will start on http://localhost:3000.
 8.Paste the above link in the browser and hit enter if it does not start automatically
 9.Sample video of the app https://screenrec.com/share/uwemU3odRS .
-10.In deployment the api is not working as develpoer plan only supports localhost api  
+10.In deployment the api is not working as developer plan only supports localhost api  
 ![Capture](https://github.com/kaku2020/NewsFeedApp/assets/58700393/a61aea3b-8a12-43e9-b4f1-d46f70718164)
 
 ![Capture3](https://github.com/kaku2020/NewsFeedApp/assets/58700393/26a54763-864a-4b33-963c-3a2fecad859a)
