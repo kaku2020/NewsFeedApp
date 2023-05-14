@@ -1,15 +1,15 @@
 # Instructions for getting started 
 
-1.Clone the project from the repository .For help https://www.youtube.com/watch?v=q9wc7hUrW8
-2.open the project in VS Code.
-3.Open the terminal.
-4.In the terminal copy paste "npm install"(make sure your terminal is pointing to the same directory where )
-5.Press Enter.
-6.After installation in the terminal copy paste "npm start"
-7.The app will start on http://localhost:3000.
-8.Paste the above link in the browser and hit enter if it does not start automatically
-9.Sample video of the app https://screenrec.com/share/uwemU3odRS .
-10.In deployment the api is not working as developer plan only supports localhost api  
+#1.Clone the project from the repository .For help https://www.youtube.com/watch?v=q9wc7hUrW8
+#2.open the project in VS Code.
+#3.Open the terminal.
+#4.In the terminal copy paste "npm install"(make sure your terminal is pointing to the same directory where package.json file is otherwise it won't work)
+#5.Press Enter.
+#6.After installation in the terminal copy paste "npm start"
+#7.The app will start on http://localhost:3000.
+#8.Paste the above link in the browser and hit enter if it does not start automatically
+#9.Sample video of the app https://screenrec.com/share/uwemU3odRS .
+#10.In deployment the api is not working as developer plan only supports localhost api  
 ![Capture](https://github.com/kaku2020/NewsFeedApp/assets/58700393/a61aea3b-8a12-43e9-b4f1-d46f70718164)
 
 ![Capture3](https://github.com/kaku2020/NewsFeedApp/assets/58700393/26a54763-864a-4b33-963c-3a2fecad859a)
