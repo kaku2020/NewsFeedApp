@@ -1,78 +1,80 @@
-import React,{useState,useEffect} from 'react'
-import  './NewsApp.css'
+import React, { useState, useEffect } from "react";
+import "./NewsApp.css";
+import axios from "axios";
+import NewsArticles from "../NewsArticles/NewsArticles";
+import BookmarkedArticles from "../BookmarkedArticles/BookmarkedArticles";
 
-import axios from 'axios'
-import NewsArticles from '../NewsArticles/NewsArticles';
-import BookmarkedArticles from '../BookmarkedArticles/BookmarkedArticles';
-
-
-
-// const API_KEY = '2f987c859254473781ba98e7afcd3297'
-const API_KEY = process.env.REACT_APP_API_KEY;// coreectly api key should be hidden 
+const API_KEY = "2f987c859254473781ba98e7afcd3297";
+// const API_KEY = process.env.REACT_APP_API_KEY;// correctly api key should be hidden
 function NewsApp() {
-  const [data,setData] = useState('');
-  const [search,setSearch] = useState('bitcoin');
+  const [data, setData] = useState("");
+  const [search, setSearch] = useState("bitcoin");
   const [currentPage, setCurrentPage] = useState(1);
-  const [currbookmarkedArticles, setBookmarkedArticles] = useState([])
-  
+  const [currbookmarkedArticles, setBookmarkedArticles] = useState([]);
+
   useEffect(() => {
     const initalcall = async () => {
       try {
-    const response = await axios.get(
-      'https://newsapi.org/v2/everything?q='+'bitcoin' +'&apiKey=' + API_KEY
-    );
-    setData(response.data.articles);
-    
-    console.log(response.data.articles);
-  } catch (error) {
-    console.error(error);
-  }
-  }
-  initalcall();
-
-},[])
+        const response = await axios.get(
+          "https://newsapi.org/v2/everything?q=" +
+            "bitcoin" +
+            "&apiKey=" +
+            API_KEY
+        );
+        setData(response.data.articles);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    initalcall();
+  }, []);
 
   const handleInput = async () => {
     try {
-      const optimised_search = search.split(' ').join('%20');
+      const optimised_search = search.split(" ").join("%20");
       const response = await axios.get(
-        'https://newsapi.org/v2/everything?q='+optimised_search +'&apiKey=' + API_KEY
+        "https://newsapi.org/v2/everything?q=" +
+          optimised_search +
+          "&apiKey=" +
+          API_KEY
       );
       setData(response.data.articles);
-      
-      console.log(response.data.articles);
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
   };
 
   return (
-    <div className='app_container'>
-      
-      <div className='navbar'>  
-     
+    <div className="app_container">
+      <div className="navbar">
         <input
-          type='text'
+          type="text"
           value={search}
           onChange={handleSearch}
           data-testid="orders__search"
-      />
-      <button onClick = {handleInput}>Search Articles</button></div>
-      <div className='newsFeed'>
-      <NewsArticles data = {data} totalResults = {100} 
-      currentPage = {currentPage} setCurrentPage ={setCurrentPage} 
-      currbookmarkedArticles = {currbookmarkedArticles} setBookmarkedArticles = {setBookmarkedArticles}/>
-       <BookmarkedArticles bookmarks = {currbookmarkedArticles} setBookmarks = {setBookmarkedArticles}/>
+        />
+        <button onClick={handleInput}>Search Articles</button>
+      </div>
+      <div className="newsFeed">
+        <NewsArticles
+          data={data}
+          totalResults={100}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          currbookmarkedArticles={currbookmarkedArticles}
+          setBookmarkedArticles={setBookmarkedArticles}
+        />
+        <BookmarkedArticles
+          bookmarks={currbookmarkedArticles}
+          setBookmarks={setBookmarkedArticles}
+        />
       </div>
     </div>
-  )
+  );
 }
 
-export default NewsApp
-
-
-
+export default NewsApp;

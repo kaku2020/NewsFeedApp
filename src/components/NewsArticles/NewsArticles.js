@@ -1,24 +1,34 @@
-import React,{useEffect} from 'react'
-import Button from '@mui/material/Button';
-import  './NewsArticles'
-import BootstrapArticle from '../Bootstrap/BootstrapArticle';
+import React, { useEffect } from "react";
+import Button from "@mui/material/Button";
+import "./NewsArticles";
+import BootstrapArticle from "../Bootstrap/BootstrapArticle";
 
-function NewsArticles({data,totalResults,currentPage,setCurrentPage,currbookmarkedArticles,setBookmarkedArticles}) {
-  
+function NewsArticles({
+  data,
+  totalResults,
+  currentPage,
+  setCurrentPage,
+  currbookmarkedArticles,
+  setBookmarkedArticles,
+}) {
   useEffect(() => {
-    //Retrieve bookmarkedArticles from  local storage when the component mounts 
+    //Retrieve bookmarkedArticles from  local storage when the component mounts
     try {
-    let storedBookmarks = localStorage.getItem('bookmarkedArticles');
-    storedBookmarks = JSON.parse(storedBookmarks);
-    if(storedBookmarks.length > 0){
-      setBookmarkedArticles(storedBookmarks);
-    } } catch (error) {
+      let storedBookmarks = localStorage.getItem("bookmarkedArticles");
+      storedBookmarks = JSON.parse(storedBookmarks);
+      if (storedBookmarks.length > 0) {
+        setBookmarkedArticles(storedBookmarks);
+      }
+    } catch (error) {
       console.error(error);
-  }
-  },[])
+    }
+  }, []);
 
-   useEffect(() => {
-    localStorage.setItem('bookmarkedArticles', JSON.stringify(currbookmarkedArticles));
+  useEffect(() => {
+    localStorage.setItem(
+      "bookmarkedArticles",
+      JSON.stringify(currbookmarkedArticles)
+    );
   }, [currbookmarkedArticles]);
 
   const handleNextPage = () => {
@@ -26,69 +36,83 @@ function NewsArticles({data,totalResults,currentPage,setCurrentPage,currbookmark
   };
 
   const handlePrevPage = () => {
-    setCurrentPage((prevPage) => prevPage - 1)
-  }
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
 
   const handleBookmark = (article) => {
- 
     //check if the article is already book marked
     const isBookmarked = currbookmarkedArticles.find(
       (bookmark) => bookmark.url === article.url
     );
 
-    if(!isBookmarked) {
+    if (!isBookmarked) {
       //Add the article to the bookmarkedArticles state
-      setBookmarkedArticles((prevBookmarks) => [...prevBookmarks,article]);
-    }else{
-      
-      
+      setBookmarkedArticles((prevBookmarks) => [...prevBookmarks, article]);
+    } else {
       //Remove the article from the bookmarked articles state
-      setBookmarkedArticles((prevBookmarks) => prevBookmarks.filter((bookmark) => bookmark.url !== article.url)
+      setBookmarkedArticles((prevBookmarks) =>
+        prevBookmarks.filter((bookmark) => bookmark.url !== article.url)
       );
     }
   };
 
-  const firstindex = currentPage*10 -10;
-  const last_index = currentPage*10
-  const currData = data.slice(firstindex,last_index)
+  const firstindex = currentPage * 10 - 10;
+  const last_index = currentPage * 10;
+  const currData = data.slice(firstindex, last_index);
 
   return (
-    
-    <div className='news_container'>
+    <div className="news_container">
       <h1>News App</h1>
-      <div className='news_container_feed'>
-        <div className='news_container_components_1'>
+      <div className="news_container_feed">
+        <div className="news_container_components_1">
           {currData.length > 0 ? (
-        <div className='news_container_components_part'>
-        <ul>
-          {currData.map((article) => {
-            return (
-          
-              <div className='news_container_components_part_items'>
-              <li key= {article.url}>
-                <BootstrapArticle article = {article} currbookmarkedArticles = {currbookmarkedArticles} handleBookmark = {handleBookmark} />
-                </li>
-           
-            </div>)})}
-        </ul>
-        {'  '}
-        <div className='news_container_components_part_items'>
-        {currentPage > 1 && (
-           <Button variant="contained"  size = "small" onClick= {handlePrevPage}>Previous Page</Button>
-         )}
-        {' '}
-        {currentPage*10 < totalResults && (
-            <Button  variant="contained" size = "small" onClick={handleNextPage}>Next Page</Button>
-        )}
-         </div>
-          </div>
-          ) : (<div className='news_container_components_part_items'>
-            <h2>Loading articles...</h2> </div>)
-            }
+            <div className="news_container_components_part">
+              <ul>
+                {currData.map((article) => {
+                  return (
+                    <div className="news_container_components_part_items">
+                      <li key={article.url}>
+                        <BootstrapArticle
+                          article={article}
+                          currbookmarkedArticles={currbookmarkedArticles}
+                          handleBookmark={handleBookmark}
+                        />
+                      </li>
+                    </div>
+                  );
+                })}
+              </ul>
+              {"  "}
+              <div className="news_container_components_part_items">
+                {currentPage > 1 && (
+                  <Button
+                    variant="contained"
+                    size="small"
+                    onClick={handlePrevPage}
+                  >
+                    Previous Page
+                  </Button>
+                )}{" "}
+                {currentPage * 10 < totalResults && (
+                  <Button
+                    variant="contained"
+                    size="small"
+                    onClick={handleNextPage}
+                  >
+                    Next Page
+                  </Button>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div className="news_container_components_part_items">
+              <h2>Loading articles...</h2>{" "}
+            </div>
+          )}
         </div>
-          </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default NewsArticles
+export default NewsArticles;
