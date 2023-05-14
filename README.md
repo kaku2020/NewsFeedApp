@@ -3,11 +3,12 @@
 1.Clone the project from the repository .For help https://www.youtube.com/watch?v=q9wc7hUrW8
 2.open the project in VS Code.
 3.Open the terminal.
-4.In the terminal copy paste "npm install"
+4.In the terminal copy paste "npm install"(make sure your terminal is pointing to the same directory where )
 5.Press Enter.
 6.After installation in the terminal copy paste "npm start"
 7.The app will start on http://localhost:3000.
 8.Paste the above link in the browser and hit enter if it does not start automatically
+9.Sample video of the app  https://screenrec.com/share/uwemU3odRS .
 
 
 # Getting Started with Create React App
