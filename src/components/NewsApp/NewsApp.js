@@ -1,11 +1,14 @@
 import React,{useState,useEffect} from 'react'
 import  './NewsApp.css'
+
 import axios from 'axios'
 import NewsArticles from '../NewsArticles/NewsArticles';
 import BookmarkedArticles from '../BookmarkedArticles/BookmarkedArticles';
 
-const API_KEY = '2f987c859254473781ba98e7afcd3297'
-// const API_KEY = process.env.REACT_APP_API_KEY;// coreectly api key should be hidden 
+
+
+// const API_KEY = '2f987c859254473781ba98e7afcd3297'
+const API_KEY = process.env.REACT_APP_API_KEY;// coreectly api key should be hidden 
 function NewsApp() {
   const [data,setData] = useState('');
   const [search,setSearch] = useState('bitcoin');
