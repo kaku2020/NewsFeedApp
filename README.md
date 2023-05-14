@@ -7,8 +7,15 @@
 #5.Press Enter.
 #6.After installation in the terminal copy paste "npm start"
 #7.The app will start on http://localhost:3000.
-#8.Paste the above link in the browser and hit enter if it does not start automatically
+#8.Paste the above link in the browser and hit enter if it does not start automatically.
 #9.Sample video of the app https://screenrec.com/share/uwemU3odRS .
+
+![Capture4](https://github.com/kaku2020/NewsFeedApp/assets/58700393/1e67d260-7c24-448e-910d-2415c4ad451b)
+
+![Capture5](https://github.com/kaku2020/NewsFeedApp/assets/58700393/3e844e1d-497e-4dc3-8ad0-fdb209ecbaf8)
+
+![Capture6](https://github.com/kaku2020/NewsFeedApp/assets/58700393/006626f7-cd77-4e3d-a621-731ec03ada47)
+
 #10.In deployment the api is not working as developer plan only supports localhost api  
 ![Capture](https://github.com/kaku2020/NewsFeedApp/assets/58700393/a61aea3b-8a12-43e9-b4f1-d46f70718164)
 
